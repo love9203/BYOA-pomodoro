@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Pomodoro Timer</h1>
+        <div class="timer" id="timer">25:00</div>
+        <div class="timer-controls">
+            <div class="time-inputs">
+                <label>
+                    Work Time (minutes):
+                    <input type="number" id="workTime" min="1" value="25">
+                </label>
+                <label>
+                    Rest Time (minutes):
+                    <input type="number" id="restTime" min="1" value="5">
+                </label>
+            </div>
+            <div class="buttons">
+                <button onclick="startTimer()">Start</button>
+                <button onclick="pauseTimer()">Pause</button>
+                <button id="resetButton" onclick="resetTimer()">Reset</button>
+                <button id="toggleButton" onclick="toggleWorkRest()">Switch to Rest</button>
+            </div>
+        </div>
+        <div id="status">Work Time</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

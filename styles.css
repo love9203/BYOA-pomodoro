@@ -1,0 +1,134 @@
+body {
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.container {
+    text-align: center;
+    background-color: white;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 90%;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.timer {
+    font-size: 5rem;
+    font-weight: 700;
+    margin: 2rem 0;
+    color: #34495e;
+    font-family: 'Monaco', monospace;
+}
+
+.time-inputs {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.time-inputs label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+input[type="number"] {
+    width: 80px;
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: center;
+    transition: border-color 0.3s;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+button {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-width: 100px;
+}
+
+button:first-child {
+    background-color: #3498db;
+    color: white;
+}
+
+button:nth-child(2) {
+    background-color: #e74c3c;
+    color: white;
+}
+
+#resetButton {
+    background-color: #f1c40f;
+    color: #2c3e50;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+button:first-child:hover {
+    background-color: #2980b9;
+}
+
+button:nth-child(2):hover {
+    background-color: #c0392b;
+}
+
+#resetButton:hover {
+    background-color: #f39c12;
+}
+
+#status {
+    margin-top: 2rem;
+    font-weight: 600;
+    color: #7f8c8d;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#toggleButton {
+    background-color: #9b59b6;
+    color: white;
+}
+
+#toggleButton:hover {
+    background-color: #8e44ad;
+}
