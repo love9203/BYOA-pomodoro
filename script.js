@@ -68,20 +68,40 @@ function updateTimer() {
 function startTimer() {
     if (isRunning) return;
     
-    // Always prompt for focus task in work mode
     if (isWorkTime) {
-        const focusTask = prompt('What would you like to focus on this session?');
-        
-        // If user clicks cancel or enters empty string, don't start timer
-        if (!focusTask || focusTask.trim() === '') {
-            return;
-        }
-        
-        currentFocus = focusTask;
-        document.getElementById('status').textContent = `Work Time - Focus: ${currentFocus}`;
+        showCustomPrompt();
+        return;
     }
     
-    // Get user-defined times and convert to seconds
+    startTimerExecution();
+}
+
+function showCustomPrompt() {
+    const modal = document.getElementById('customPrompt');
+    const input = document.getElementById('focusInput');
+    modal.style.display = 'flex';
+    input.value = '';
+    input.focus();
+}
+
+function submitFocus() {
+    const input = document.getElementById('focusInput');
+    const focusTask = input.value.trim();
+    
+    if (!focusTask) {
+        return;
+    }
+    
+    document.getElementById('customPrompt').style.display = 'none';
+    currentFocus = focusTask;
+    startTimerExecution();
+}
+
+function cancelFocus() {
+    document.getElementById('customPrompt').style.display = 'none';
+}
+
+function startTimerExecution() {
     if (!timeLeft) {
         const workMinutes = parseInt(document.getElementById('workTime').value);
         const restMinutes = parseInt(document.getElementById('restTime').value);
@@ -165,3 +185,10 @@ function addFiveMinutes() {
     timeLeft += 300; // Add 5 minutes (300 seconds)
     updateDisplay();
 }
+
+// Add event listener for Enter key in focus input
+document.getElementById('focusInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        submitFocus();
+    }
+});
