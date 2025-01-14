@@ -16,6 +16,7 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     max-width: 600px;
     width: 90%;
+    position: relative;
 }
 
 h1 {
@@ -124,11 +125,31 @@ button:nth-child(2):hover {
     letter-spacing: 1px;
 }
 
-#toggleButton {
+.toggle-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    min-width: auto;
+}
+
+.toggle-button.work {
     background-color: #9b59b6;
     color: white;
 }
 
-#toggleButton:hover {
-    background-color: #8e44ad;
+.toggle-button.rest {
+    background-color: #3498db;
+    color: white;
+}
+
+.toggle-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }

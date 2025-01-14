@@ -26,10 +26,29 @@ function updateTimer() {
     } else {
         clearInterval(timer);
         isRunning = false;
+        
+        // Play alarm sound
+        const alarm = document.getElementById('alarmSound');
+        alarm.currentTime = 0;
+        alarm.play()
+          .catch(e => console.log('Error playing sound:', e));
+        
+        // Use a non-blocking notification
+        const message = isWorkTime ? 'Rest Time!' : 'Work Time!';
+        
+        // Switch modes
         isWorkTime = !isWorkTime;
         timeLeft = isWorkTime ? workTime : restTime;
         updateDisplay();
-        alert(isWorkTime ? 'Work Time!' : 'Rest Time!');
+        
+        // Optional: Use a more modern notification
+        if ("Notification" in window && Notification.permission === "granted") {
+            new Notification(message);
+        } else {
+            // Fallback to a non-blocking alert using setTimeout
+            setTimeout(() => alert(message), 100);
+        }
+        
         startTimer();
     }
 }
@@ -85,10 +104,30 @@ updateDisplay();
 
 // Add this new function
 function toggleWorkRest() {
+    // Clear existing timer if running
+    if (isRunning) {
+        clearInterval(timer);
+        isRunning = false;
+    }
+    
+    // Toggle state
     isWorkTime = !isWorkTime;
+    
+    // Reset timer for new mode
+    workTime = parseInt(document.getElementById('workTime').value) * 60;
+    restTime = parseInt(document.getElementById('restTime').value) * 60;
     timeLeft = isWorkTime ? workTime : restTime;
+    
+    // Update display and button
     updateDisplay();
-    // Update toggle button text
-    document.getElementById('toggleButton').textContent = 
-        isWorkTime ? 'Switch to Rest' : 'Switch to Work';
+    const toggleButton = document.getElementById('toggleButton');
+    toggleButton.textContent = isWorkTime ? 'Rest' : 'Work';
+    toggleButton.className = isWorkTime ? 'toggle-button work' : 'toggle-button rest';
 }
+
+// Request notification permission when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    if ("Notification" in window) {
+        Notification.requestPermission();
+    }
+});
