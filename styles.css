@@ -125,6 +125,12 @@ button:nth-child(2):hover {
     letter-spacing: 1px;
 }
 
+/* Update the focus text style */
+#status .focus-text {
+    font-weight: 900;
+    color: #3498db;
+}
+
 .toggle-button {
     position: absolute;
     top: 20px;

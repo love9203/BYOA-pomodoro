@@ -4,6 +4,7 @@ let isRunning = false;
 let timer;
 let workTime;
 let restTime;
+let currentFocus = '';
 
 function updateDisplay() {
     const minutes = Math.floor(timeLeft / 60);
@@ -12,7 +13,18 @@ function updateDisplay() {
     
     // Update timer display
     document.getElementById('timer').textContent = display;
-    document.getElementById('status').textContent = isWorkTime ? 'Work Time' : 'Rest Time';
+    
+    // Update status with focus task if in work mode
+    if (isWorkTime) {
+        document.getElementById('status').textContent = currentFocus ? 
+            `Work Time - Focus: ` : 'Work Time';
+        if (currentFocus) {
+            const statusEl = document.getElementById('status');
+            statusEl.innerHTML = `Work Time - Focus: <span class="focus-text">${currentFocus}</span>`;
+        }
+    } else {
+        document.getElementById('status').textContent = 'Rest Time';
+    }
     
     // Update browser tab title
     const state = isWorkTime ? 'Work' : 'Rest';
@@ -55,6 +67,19 @@ function updateTimer() {
 
 function startTimer() {
     if (isRunning) return;
+    
+    // Always prompt for focus task in work mode
+    if (isWorkTime) {
+        const focusTask = prompt('What would you like to focus on this session?');
+        
+        // If user clicks cancel or enters empty string, don't start timer
+        if (!focusTask || focusTask.trim() === '') {
+            return;
+        }
+        
+        currentFocus = focusTask;
+        document.getElementById('status').textContent = `Work Time - Focus: ${currentFocus}`;
+    }
     
     // Get user-defined times and convert to seconds
     if (!timeLeft) {
