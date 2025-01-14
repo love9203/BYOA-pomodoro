@@ -131,3 +131,12 @@ document.addEventListener('DOMContentLoaded', () => {
         Notification.requestPermission();
     }
 });
+
+// Add this new function
+function addFiveMinutes() {
+    // Only add time if timer is running
+    if (!isRunning) return;
+    
+    timeLeft += 300; // Add 5 minutes (300 seconds)
+    updateDisplay();
+}

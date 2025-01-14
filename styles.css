@@ -153,3 +153,18 @@ button:nth-child(2):hover {
     transform: scale(1.05);
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
+
+.input-group {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.add-time-btn {
+    background-color: #3498db !important;
+    color: white !important;
+}
+
+.add-time-btn:hover {
+    background-color: #2980b9 !important;
+}

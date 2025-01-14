@@ -16,17 +16,22 @@
             <div class="time-inputs">
                 <label>
                     Work Time (minutes):
-                    <input type="number" id="workTime" min="1" value="25">
+                    <div class="input-group">
+                        <input type="number" id="workTime" min="1" value="25">
+                    </div>
                 </label>
                 <label>
                     Rest Time (minutes):
-                    <input type="number" id="restTime" min="1" value="5">
+                    <div class="input-group">
+                        <input type="number" id="restTime" min="1" value="5">
+                    </div>
                 </label>
             </div>
             <div class="buttons">
                 <button onclick="startTimer()">Start</button>
                 <button onclick="pauseTimer()">Pause</button>
                 <button id="resetButton" onclick="resetTimer()">Reset</button>
+                <button id="addTimeButton" onclick="addFiveMinutes()" class="add-time-btn">+5 Min</button>
             </div>
         </div>
         <div id="status">Work Time</div>
