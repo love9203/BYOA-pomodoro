@@ -6,6 +6,7 @@ body {
     min-height: 100vh;
     margin: 0;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 20px;
 }
 
 .container {
@@ -173,4 +174,49 @@ button:nth-child(2):hover {
 
 .add-time-btn:hover {
     background-color: #2980b9 !important;
+}
+
+/* Add media queries for mobile responsiveness */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 2rem;
+        width: 95%;
+    }
+
+    .timer {
+        font-size: 4rem;
+    }
+
+    .buttons {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+
+    button {
+        padding: 0.7rem 1.2rem;
+        min-width: 80px;
+    }
+
+    .time-inputs {
+        gap: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Add even smaller screen adjustments */
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    .timer {
+        font-size: 3.5rem;
+    }
+
+    .time-inputs label {
+        font-size: 0.8rem;
+    }
 }
